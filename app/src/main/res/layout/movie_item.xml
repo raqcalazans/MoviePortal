@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/movie_item"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/poster_filme_lista"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/poster_interestelar"
+        android:layout_margin="10dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/filme_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/filme_nome"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_weight="8"
+        android:gravity="center"
+        android:layout_gravity="center" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
