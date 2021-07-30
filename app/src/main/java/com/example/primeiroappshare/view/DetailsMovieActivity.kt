@@ -1,4 +1,4 @@
-package com.example.primeiroappshare
+package com.example.primeiroappshare.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +12,8 @@ class DetailsMovieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        intent.getIntExtra("id_api", -1)
 
         binding.btnVoltar.setOnClickListener {
             val intent = Intent(this, ListMoviesActivity::class.java)

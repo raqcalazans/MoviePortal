@@ -1,6 +1,6 @@
-package com.example.primeiroappshare
+package com.example.primeiroappshare.model
 
-import com.example.primeiroappshare.ApiConsts.API_KEY
+import com.example.primeiroappshare.model.ApiConsts.API_KEY
 import retrofit2.Call
 import retrofit2.http.GET
 

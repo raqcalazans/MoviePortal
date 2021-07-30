@@ -1,3 +1,3 @@
-package com.example.primeiroapp
+package com.example.primeiroappshare.model
 
 data class MovieModel(val title: String, val id: Int, val poster_path: String, val overview: String)
