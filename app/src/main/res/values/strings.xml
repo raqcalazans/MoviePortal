@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">PrimeiroAppShare</string>
-    <string name="filme_nome">Interestelar</string>
-    <string name="genero_filme">Gênero: Ficção-científica</string>
-    <string name="direcao_filme">Direção: Christopher Nolan</string>
-    <string name="ano_filme">Ano: 2014</string>
-    <string name="duracao_filme">Duração: 2h 55m</string>
-    <string name="sinopse_filme">Sinopse: As reservas naturais da Terra estão chegando ao fim e um grupo de astronautas recebe a missão de verificar possíveis planetas para receberem a população mundial, possibilitando a continuação da espécie. Cooper é chamado para liderar o grupo e aceita a missão sabendo que pode nunca mais ver os filhos. Ao lado de Brand, Jenkins e Doyle, ele seguirá em busca de um novo lar.</string>
+    <string name="app_name">Movie Portal</string>
+    <string name="movie_name">Interestelar</string>
+    <string name="imdb_movie">IMDb: 8.3</string>
+    <string name="release_date">Release date: 2014</string>
+    <string name="genre_movie">Genre: Science Fiction</string>
+    <string name="overview_movie">As reservas naturais da Terra estão chegando ao fim e um grupo de astronautas recebe a missão de verificar possíveis planetas para receberem a população mundial, possibilitando a continuação da espécie. Cooper é chamado para liderar o grupo e aceita a missão sabendo que pode nunca mais ver os filhos. Ao lado de Brand, Jenkins e Doyle, ele seguirá em busca de um novo lar.</string>
+    <string name="btn_back">Voltar</string>
+    <string name="btn_view_movies">View movies</string>
+    <string name="btn_see_more">Ver mais</string>
 </resources>

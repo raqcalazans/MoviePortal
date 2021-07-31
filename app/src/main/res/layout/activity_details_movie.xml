@@ -1,106 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:background="@color/black"
-    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        tools:context=".view.MainActivity">
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/poster_filme"
+            android:id="@+id/poster_movie"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:visibility="gone"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/poster_interestelar" />
+            tools:src="@drawable/poster_interestelar" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/nome_filme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/filme_nome"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/nome_filme"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/poster_filme" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/genero_filme"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/text_background"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/genero_filme"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            app:layout_constraintTop_toBottomOf="@+id/nome_filme" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="300dp"
+            android:background="#80FFFFFF"
+            android:padding="20dp"
+            android:visibility="gone"
+            tools:context=".view.MainActivity">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/direcao_filme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/direcao_filme"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            app:layout_constraintTop_toBottomOf="@+id/genero_filme" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name_movie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/text_details"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/imdb_movie"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="@string/movie_name" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/ano_filme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/ano_filme"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            app:layout_constraintEnd_toStartOf="@id/duracao_filme"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/direcao_filme" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/imdb_movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/text_details"
+                android:textSize="20sp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/name_movie"
+                tools:text="@string/imdb_movie" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/duracao_filme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/duracao_filme"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@id/ano_filme"
-            app:layout_constraintTop_toBottomOf="@+id/direcao_filme" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/release_date_movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_details"
+                android:textSize="20sp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/imdb_movie"
+                tools:text="@string/release_date" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/sinopse_filme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:justificationMode="inter_word"
-            android:text="@string/sinopse_filme"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            app:layout_constraintTop_toBottomOf="@+id/ano_filme" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/genre_movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_details"
+                android:textSize="20sp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/release_date_movie"
+                tools:text="@string/genre_movie" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_voltar"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:text="Voltar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sinopse_filme" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/overview_movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:justificationMode="inter_word"
+                android:textColor="@color/text_details"
+                android:textSize="20sp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/genre_movie"
+                tools:text="@string/overview_movie" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_voltar"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/dark_red"
+                android:text="@string/btn_back"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/overview_movie" />
+
+        <!--  -->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
 
 </ScrollView>

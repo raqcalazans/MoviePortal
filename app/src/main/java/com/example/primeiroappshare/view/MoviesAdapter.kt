@@ -20,10 +20,10 @@ class MoviesAdapter(val movieClickListener:(Int) -> Unit) :
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         val item = movieList[position]
-        holder.binding.filmeTitulo.text = item.title
+        holder.binding.movieTitle.text = item.title
         Glide.with(holder.binding.root)
             .load("https://image.tmdb.org/t/p/w500${item.poster_path}")
-            .into(holder.binding.posterFilmeLista)
+            .into(holder.binding.posterMovieList)
         holder.binding.movieItem.setOnClickListener {
             movieClickListener(item.id)
         }
@@ -32,7 +32,8 @@ class MoviesAdapter(val movieClickListener:(Int) -> Unit) :
     override fun getItemCount() = movieList.size
 
     fun addMovies(list: List<MovieModel>) {
+        val firstItem = movieList.size
         movieList.addAll(list)
-        notifyDataSetChanged()
+        notifyItemRangeInserted(firstItem, list.size)
     }
 }
