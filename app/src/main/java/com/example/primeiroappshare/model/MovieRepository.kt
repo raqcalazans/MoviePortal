@@ -31,4 +31,22 @@ object MovieRepository {
             }
         }
     }
+
+    fun getMovie(callback: (MovieModel) -> Unit, id: Int){
+        CoroutineScope(GlobalScope.coroutineContext).launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO){
+                val callApi = moviesApi.getMovieById(id)
+                callApi.enqueue(object : Callback<MovieModel> {
+                    override fun onResponse(call: Call<MovieModel>, response: Response<MovieModel>) {
+                        response.body()?.let {
+                            callback(it)
+                        }
+                    }
+                    override fun onFailure(call: Call<MovieModel>, t: Throwable) {
+
+                    }
+                })
+            }
+        }
+    }
 }
