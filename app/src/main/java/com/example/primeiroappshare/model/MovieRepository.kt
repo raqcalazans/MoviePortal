@@ -34,10 +34,61 @@ object MovieRepository {
         }
     }
 
+    fun getTopRated(page: Int, callback: (List<MovieModel>) -> Unit){
+        CoroutineScope(GlobalScope.coroutineContext).launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO){
+                val callApi = moviesApi.listTopRated(page = page)
+                callApi.enqueue(object : Callback<MovieList> {
+                    override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
+                        callback(response.body()?.results ?: mutableListOf())
+                    }
+
+                    override fun onFailure(call: Call<MovieList>, t: Throwable) {
+                        println("Caiu no onFailure")
+                    }
+                })
+            }
+        }
+    }
+
+    fun getUpcoming(page: Int, callback: (List<MovieModel>) -> Unit){
+        CoroutineScope(GlobalScope.coroutineContext).launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO){
+                val callApi = moviesApi.listUpcoming(page = page)
+                callApi.enqueue(object : Callback<MovieList> {
+                    override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
+                        callback(response.body()?.results ?: mutableListOf())
+                    }
+
+                    override fun onFailure(call: Call<MovieList>, t: Throwable) {
+                        println("Caiu no onFailure")
+                    }
+                })
+            }
+        }
+    }
+
+    fun getLatest(page: Int, callback: (List<MovieModel>) -> Unit){
+        CoroutineScope(GlobalScope.coroutineContext).launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO){
+                val callApi = moviesApi.listLatest(page = page)
+                callApi.enqueue(object : Callback<MovieList> {
+                    override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
+                        callback(response.body()?.results ?: mutableListOf())
+                    }
+
+                    override fun onFailure(call: Call<MovieList>, t: Throwable) {
+                        println("Caiu no onFailure")
+                    }
+                })
+            }
+        }
+    }
+
     fun getMovie(callback: (MovieModel) -> Unit, id: Int){
         CoroutineScope(GlobalScope.coroutineContext).launch(Dispatchers.Main) {
             withContext(Dispatchers.IO){
-                val callApi = moviesApi.getMovieById(API_KEY, IDIOM, id)
+                val callApi = moviesApi.getMovieById(id, API_KEY, IDIOM)
                 callApi.enqueue(object : Callback<MovieModel> {
                     override fun onResponse(call: Call<MovieModel>, response: Response<MovieModel>) {
                         response.body()?.let {

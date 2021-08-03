@@ -7,23 +7,27 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.example.primeiroappshare.databinding.ActivityDetailsMovieBinding
 import com.example.primeiroappshare.model.MovieRepository
+import com.example.primeiroappshare.view.MainActivity.Companion.ID_LIST
 
 class DetailsMovieActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsMovieBinding
-    private var id: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        id = intent.getIntExtra("id_api", -1)
+        val id = intent.getIntExtra("id_api", -1)
 
+        callDetails(id)
+        
         binding.btnVoltar.setOnClickListener {
             val intent = Intent(this, ListMoviesActivity::class.java)
+            //intent.putExtra(ID_LIST, )
             startActivity(intent)
         }
-
+    }
+    private fun callDetails(id: Int) {
         MovieRepository.getMovie({
             binding.progressBar.visibility = View.GONE
             binding.textBackground.visibility = View.VISIBLE
@@ -38,6 +42,7 @@ class DetailsMovieActivity : AppCompatActivity() {
             binding.overviewMovie.visibility = View.VISIBLE
             binding.overviewMovie.text = it.overview
             binding.posterMovie.visibility = View.VISIBLE
+            binding.btnVoltar.visibility = View.VISIBLE
             Glide.with(binding.root)
                 .load("https://image.tmdb.org/t/p/w500${it.poster_path}")
                 .into(binding.posterMovie)

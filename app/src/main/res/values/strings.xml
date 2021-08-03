@@ -5,7 +5,11 @@
     <string name="release_date">Release date: 2014</string>
     <string name="genre_movie">Genre: Science Fiction</string>
     <string name="overview_movie">As reservas naturais da Terra estão chegando ao fim e um grupo de astronautas recebe a missão de verificar possíveis planetas para receberem a população mundial, possibilitando a continuação da espécie. Cooper é chamado para liderar o grupo e aceita a missão sabendo que pode nunca mais ver os filhos. Ao lado de Brand, Jenkins e Doyle, ele seguirá em busca de um novo lar.</string>
-    <string name="btn_back">Voltar</string>
-    <string name="btn_view_movies">View movies</string>
-    <string name="btn_see_more">Ver mais</string>
+    <string name="btn_popular">Popular</string>
+    <string name="btn_favorite">Favorites</string>
+    <string name="btn_see_more">See more</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_top">Top Rated</string>
+    <string name="btn_upcoming">Upcoming</string>
+    <string name="btn_latest">Latest</string>
 </resources>
