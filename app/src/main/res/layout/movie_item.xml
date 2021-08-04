@@ -5,34 +5,34 @@
     android:id="@+id/movie_item"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:orientation="horizontal"
     android:layout_margin="10dp"
+    android:orientation="horizontal"
     tools:background="@color/background_app">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/poster_movie_list"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
         tools:src="@drawable/poster_interestelar" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/movie_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="15sp"
+        android:layout_gravity="center"
         android:layout_weight="8"
         android:gravity="center"
-        android:layout_gravity="center"
-        tools:text="@string/movie_name"/>
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        tools:text="@string/movie_name" />
 
     <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/favorite_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:button="@drawable/custom_checkbox"  />
+        android:button="@drawable/custom_checkbox"
+        android:gravity="center" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

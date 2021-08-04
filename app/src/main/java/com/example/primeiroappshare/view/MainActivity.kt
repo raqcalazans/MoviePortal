@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.primeiroappshare.databinding.ActivityMainBinding
-import com.example.primeiroappshare.view.ListMoviesActivity.Companion.LATEST
+import com.example.primeiroappshare.view.ListMoviesActivity.Companion.FAVORITE
 import com.example.primeiroappshare.view.ListMoviesActivity.Companion.POPULAR
 import com.example.primeiroappshare.view.ListMoviesActivity.Companion.TOP_RATED
 import com.example.primeiroappshare.view.ListMoviesActivity.Companion.UPCOMING
@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnLatest.setOnClickListener {
+        binding.btnFavorite.setOnClickListener {
             val intent = Intent(this, ListMoviesActivity::class.java)
-            intent.putExtra(Companion.ID_LIST, LATEST)
+            intent.putExtra(Companion.ID_LIST, FAVORITE)
             startActivity(intent)
         }
     }

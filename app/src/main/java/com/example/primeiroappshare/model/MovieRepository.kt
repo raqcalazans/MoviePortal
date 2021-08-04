@@ -1,5 +1,6 @@
 package com.example.primeiroappshare.model
 
+import android.widget.Toast
 import com.example.primeiroappshare.model.ApiConsts.API_KEY
 import com.example.primeiroappshare.model.ApiConsts.IDIOM
 import kotlinx.coroutines.*
@@ -68,10 +69,10 @@ object MovieRepository {
         }
     }
 
-    fun getLatest(page: Int, callback: (List<MovieModel>) -> Unit){
+    fun getFavorite(page: Int, callback: (List<MovieModel>) -> Unit){
         CoroutineScope(GlobalScope.coroutineContext).launch(Dispatchers.Main) {
             withContext(Dispatchers.IO){
-                val callApi = moviesApi.listLatest(page = page)
+                val callApi = moviesApi.listFavorite(page = page)
                 callApi.enqueue(object : Callback<MovieList> {
                     override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
                         callback(response.body()?.results ?: mutableListOf())

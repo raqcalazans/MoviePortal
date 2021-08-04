@@ -4,8 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import com.example.primeiroappshare.R
 import com.example.primeiroappshare.databinding.ActivityListMoviesBinding
 import com.example.primeiroappshare.model.MovieRepository
+import com.example.primeiroappshare.view.DetailsMovieActivity.Companion.ID_MOVIE
 import com.example.primeiroappshare.view.MainActivity.Companion.ID_LIST
 
 class ListMoviesActivity : AppCompatActivity() {
@@ -17,7 +20,7 @@ class ListMoviesActivity : AppCompatActivity() {
         const val POPULAR = 0
         const val TOP_RATED = 1
         const val UPCOMING = 2
-        const val LATEST = 3
+        const val FAVORITE = 3
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,19 +28,26 @@ class ListMoviesActivity : AppCompatActivity() {
         binding = ActivityListMoviesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapterMovies = MoviesAdapter { id ->
-            val intent = Intent(this, DetailsMovieActivity::class.java)
-            intent.putExtra("id_api", id)
-            startActivity(intent)
-        }
-        binding.recycleMovies.adapter = adapterMovies
         val idList = intent.getIntExtra(ID_LIST, -1)
-
         when (idList) {
             0 -> callPopular()
             1 -> callTop()
             2 -> callUpcoming()
-            3 -> callLatest()
+            3 -> callFavorite()
+            else -> Toast.makeText(this, "ERRO", Toast.LENGTH_LONG).show()
+        }
+
+        adapterMovies = MoviesAdapter { id ->
+            val intent = Intent(this, DetailsMovieActivity::class.java)
+            intent.putExtra(ID_MOVIE, id)
+            intent.putExtra(ID_LIST, idList)
+            startActivity(intent)
+        }
+        binding.recycleMovies.adapter = adapterMovies
+
+        binding.btnArrowBack.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         binding.btnSeeMore.setOnClickListener {
@@ -45,7 +55,8 @@ class ListMoviesActivity : AppCompatActivity() {
                 0 -> callPopular()
                 1 -> callTop()
                 2 -> callUpcoming()
-                3 -> callLatest()
+                3 -> callFavorite()
+                else -> Toast.makeText(this, "ERRO", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -55,6 +66,8 @@ class ListMoviesActivity : AppCompatActivity() {
             adapterMovies.addMovies(list)
             pageApi++
             binding.progressBar.visibility = View.GONE
+            binding.linearHeader.visibility = View.VISIBLE
+            binding.listName.text = getString(R.string.title_popular)
             binding.recycleMovies.visibility = View.VISIBLE
             binding.btnSeeMore.visibility = View.VISIBLE
         }
@@ -65,6 +78,8 @@ class ListMoviesActivity : AppCompatActivity() {
             adapterMovies.addMovies(list)
             pageApi++
             binding.progressBar.visibility = View.GONE
+            binding.linearHeader.visibility = View.VISIBLE
+            binding.listName.text = getString(R.string.title_top)
             binding.recycleMovies.visibility = View.VISIBLE
             binding.btnSeeMore.visibility = View.VISIBLE
         }
@@ -75,16 +90,21 @@ class ListMoviesActivity : AppCompatActivity() {
             adapterMovies.addMovies(list)
             pageApi++
             binding.progressBar.visibility = View.GONE
+            binding.linearHeader.visibility = View.VISIBLE
+            binding.listName.text = getString(R.string.title_upcoming)
             binding.recycleMovies.visibility = View.VISIBLE
             binding.btnSeeMore.visibility = View.VISIBLE
         }
     }
 
-    private fun callLatest() {
-        MovieRepository.getLatest(pageApi) { list ->
+    private fun callFavorite() {
+        MovieRepository.getFavorite(pageApi) { list ->
             adapterMovies.addMovies(list)
             pageApi++
             binding.progressBar.visibility = View.GONE
+            binding.btnArrowBack.visibility = View.VISIBLE
+            binding.listName.text = "Latest Movies"
+            binding.listName.visibility = View.VISIBLE
             binding.recycleMovies.visibility = View.VISIBLE
             binding.btnSeeMore.visibility = View.VISIBLE
         }

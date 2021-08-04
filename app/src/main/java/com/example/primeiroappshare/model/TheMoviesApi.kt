@@ -9,29 +9,37 @@ import retrofit2.http.Query
 
 interface TheMoviesApi {
     @GET("popular")
-    fun listPopular(@Query("api_key") apiKey: String = API_KEY,
-                    @Query("language") idiom: String = IDIOM,
-                    @Query("page") page: Int): Call<MovieList>
+    fun listPopular(
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("language") idiom: String = IDIOM,
+        @Query("page") page: Int
+    ): Call<MovieList>
 
     @GET("top_rated")
-    fun listTopRated(@Query("api_key") apiKey: String = API_KEY,
-                    @Query("language") idiom: String = IDIOM,
-                    @Query("page") page: Int): Call<MovieList>
+    fun listTopRated(
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("language") idiom: String = IDIOM,
+        @Query("page") page: Int
+    ): Call<MovieList>
 
     @GET("upcoming")
-    fun listUpcoming(@Query("api_key") apiKey: String = API_KEY,
-                     @Query("language") idiom: String = IDIOM,
-                     @Query("page") page: Int): Call<MovieList>
+    fun listUpcoming(
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("language") idiom: String = IDIOM,
+        @Query("page") page: Int
+    ): Call<MovieList>
 
     @GET("latest")
-    fun listLatest(@Query("api_key") apiKey: String = API_KEY,
+    fun listFavorite(@Query("api_key") apiKey: String = API_KEY,
                    @Query("language") idiom: String = IDIOM,
                    @Query("page") page: Int): Call<MovieList>
 
     @GET("{idMovie}")
-    fun getMovieById(@Path("idMovie") id: Int,
-                     @Query("api_key") apiKey: String = API_KEY,
-                     @Query("language") idiom: String = IDIOM): Call<MovieModel>
+    fun getMovieById(
+        @Path("idMovie") id: Int,
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("language") idiom: String = IDIOM
+    ): Call<MovieModel>
 }
 
 
