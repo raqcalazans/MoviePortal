@@ -25,8 +25,9 @@
         android:layout_margin="18dp"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_arrow_back_24"
-        android:translationZ="1dp"
+        android:translationZ="15dp"
         android:visibility="gone"
+        app:borderWidth="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
@@ -41,20 +42,20 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/poster_interestelar" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:orientation="vertical"
-        android:translationZ="1dp"
+        android:translationZ="10dp"
         android:visibility="gone">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/text_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="300dp"
             android:background="#95FFFFFF"
             android:padding="20dp"
             tools:context=".view.MainActivity">
@@ -63,10 +64,10 @@
                 android:id="@+id/name_movie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:textColor="@color/text_details"
-                android:textSize="25sp"
+                android:textSize="23sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/constraint1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -82,25 +83,33 @@
                 app:layout_constraintBottom_toTopOf="@+id/constraint2"
                 app:layout_constraintTop_toBottomOf="@+id/name_movie">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/imdb_movie"
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/rating_bar"
+                    style="?android:attr/ratingBarStyleIndicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="0.5"
-                    android:textColor="@color/text_details"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:numStars="5"
+                    android:progressTint="#DAA520"
+                    android:secondaryProgressTint="@color/dark_grey"
+                    android:stepSize="0.1"
                     app:layout_constraintEnd_toStartOf="@+id/adult_movie"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="@string/imdb_movie" />
+                    tools:rating="3.8" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/adult_movie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="150dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="0.5"
-                    android:textColor="@color/text_details"
+                    android:background="@drawable/textview_green_bg"
+                    android:padding="5dp"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -123,7 +132,9 @@
                     android:id="@+id/release_year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="0.5"
+                    android:drawableStart="@drawable/ic_baseline_calendar_today_24"
                     android:textColor="@color/text_details"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -137,6 +148,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@drawable/ic_twotone_access_time_24"
                     android:textColor="@color/text_details"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -150,6 +164,8 @@
                 android:id="@+id/genre_movie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:drawableStart="@drawable/ic_baseline_movie_24"
                 android:textColor="@color/text_details"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -170,6 +186,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

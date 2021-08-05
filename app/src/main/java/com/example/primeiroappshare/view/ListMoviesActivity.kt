@@ -37,12 +37,16 @@ class ListMoviesActivity : AppCompatActivity() {
             else -> Toast.makeText(this, "ERRO", Toast.LENGTH_LONG).show()
         }
 
-        adapterMovies = MoviesAdapter { id ->
+        adapterMovies = MoviesAdapter({ id ->
             val intent = Intent(this, DetailsMovieActivity::class.java)
             intent.putExtra(ID_MOVIE, id)
             intent.putExtra(ID_LIST, idList)
             startActivity(intent)
-        }
+        }, { movie, isFavorite ->
+            if(isFavorite) MovieRepository.addFavorite(this, movie)
+            else MovieRepository.removeFavorite(this, movie)
+        })
+
         binding.recycleMovies.adapter = adapterMovies
 
         binding.btnArrowBack.setOnClickListener {
@@ -58,6 +62,16 @@ class ListMoviesActivity : AppCompatActivity() {
                 3 -> callFavorite()
                 else -> Toast.makeText(this, "ERRO", Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    private fun callFavorite() {
+        MovieRepository.getFavorite(this) { list ->
+            adapterMovies.addMovies(list)
+            binding.progressBar.visibility = View.GONE
+            binding.linearHeader.visibility = View.VISIBLE
+            binding.listName.text = "Favorites Movies"
+            binding.recycleMovies.visibility = View.VISIBLE
         }
     }
 
@@ -87,24 +101,13 @@ class ListMoviesActivity : AppCompatActivity() {
 
     private fun callUpcoming() {
         MovieRepository.getUpcoming(pageApi) { list ->
+            // buscar ids dos favoritos var list = idsFavorite()
+            // checkFavorite(list)
             adapterMovies.addMovies(list)
             pageApi++
             binding.progressBar.visibility = View.GONE
             binding.linearHeader.visibility = View.VISIBLE
             binding.listName.text = getString(R.string.title_upcoming)
-            binding.recycleMovies.visibility = View.VISIBLE
-            binding.btnSeeMore.visibility = View.VISIBLE
-        }
-    }
-
-    private fun callFavorite() {
-        MovieRepository.getFavorite(pageApi) { list ->
-            adapterMovies.addMovies(list)
-            pageApi++
-            binding.progressBar.visibility = View.GONE
-            binding.btnArrowBack.visibility = View.VISIBLE
-            binding.listName.text = "Latest Movies"
-            binding.listName.visibility = View.VISIBLE
             binding.recycleMovies.visibility = View.VISIBLE
             binding.btnSeeMore.visibility = View.VISIBLE
         }

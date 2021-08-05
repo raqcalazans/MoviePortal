@@ -9,7 +9,7 @@ import com.example.primeiroappshare.model.MovieModel
 
 class MoviesViewHolder(val binding: MovieItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-class MoviesAdapter(val movieClickListener:(Int) -> Unit) :
+class MoviesAdapter(val movieClickListener:(Int) -> Unit, val favoriteCallback:(MovieModel, Boolean) -> Unit) :
     RecyclerView.Adapter<MoviesViewHolder>() {
     val movieList: MutableList<MovieModel> = mutableListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
@@ -26,6 +26,9 @@ class MoviesAdapter(val movieClickListener:(Int) -> Unit) :
             .into(holder.binding.posterMovieList)
         holder.binding.movieItem.setOnClickListener {
             movieClickListener(item.id)
+        }
+        holder.binding.favoriteIcon.setOnCheckedChangeListener { buttonView, isChecked ->
+            favoriteCallback(item, isChecked)
         }
     }
 

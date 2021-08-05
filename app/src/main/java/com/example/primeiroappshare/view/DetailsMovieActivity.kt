@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.primeiroappshare.R
 import com.example.primeiroappshare.databinding.ActivityDetailsMovieBinding
 import com.example.primeiroappshare.model.GenreModel
 import com.example.primeiroappshare.model.MovieModel
@@ -44,9 +45,9 @@ class DetailsMovieActivity : AppCompatActivity() {
 
     private fun getFormattedGenre(movie: MovieModel): String{
         var textGenre = ""
-        movie.genres?.forEachIndexed{index, name ->
-            if(index == 0) textGenre += name
-            else textGenre += ", $name"
+        movie.genres?.forEachIndexed{index, genre ->
+            if(index == 0) textGenre += genre?.name
+            else textGenre += ", ${genre?.name}"
         }
         return textGenre
     }
@@ -54,17 +55,18 @@ class DetailsMovieActivity : AppCompatActivity() {
     private fun callDetails(id: Int) {
         MovieRepository.getMovie({
             binding.progressBar.visibility = View.GONE
-            binding.scrollViewDetails.visibility = View.VISIBLE
-            binding.nameMovie.text = it.title
-            binding.imdbMovie.text = "IMDb: ${it.vote_average}"
-            binding.adultMovie.text = if (it.adult) "Age: +18" else "Age: -18"
-            val releaseYear: String = it.release_date.take(4)
-            binding.releaseYear.text = "Year: ${releaseYear}"
-            binding.durationMovie.text = "Duration: ${it.runtime}min"
-            binding.genreMovie.text = "Genre: ${getFormattedGenre(it)}"
-            binding.overviewMovie.text = it.overview
             binding.btnBack.visibility = View.VISIBLE
             binding.posterMovie.visibility = View.VISIBLE
+            binding.scrollViewDetails.visibility = View.VISIBLE
+            binding.nameMovie.text = it.title
+            binding.ratingBar.rating = ((it.vote_average/2).toFloat())
+            binding.adultMovie.text = if(it.adult) "+18" else "-18"
+            binding.adultMovie.background = if(it.adult) resources.getDrawable(R.drawable.textview_black_bg) else resources.getDrawable(R.drawable.textview_green_bg)
+            val releaseYear: String = it.release_date.take(4)
+            binding.releaseYear.text = "${releaseYear}"
+            binding.durationMovie.text = "${it.runtime}min"
+            binding.genreMovie.text = "${getFormattedGenre(it)}"
+            binding.overviewMovie.text = it.overview
             Glide.with(binding.root)
                 .load("https://image.tmdb.org/t/p/w500${it.poster_path}")
                 .into(binding.posterMovie)
