@@ -8,10 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dark_red">#790000</color>
-    <color name="yellow">#FFFF00</color>
+    <color name="yellow">#FFD700</color>
     <color name="dark_grey">#444444</color>
     <color name="light_grey">#777777</color>
-    <color name="background_app">#FF000000</color>
+    <color name="background_app">#FFFFFFFF</color>
     <color name="text_details">#FF000000</color>
     <color name="green">#008000</color>
+    <color name="dark_yellow">#DAA520</color>
+    <color name="background_details">#98FFFFFF</color>
+    <color name="blue">#191970</color>
 </resources>

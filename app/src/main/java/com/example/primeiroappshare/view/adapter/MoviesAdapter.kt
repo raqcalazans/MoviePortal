@@ -9,9 +9,13 @@ import com.example.primeiroappshare.model.MovieModel
 
 class MoviesViewHolder(val binding: MovieItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-class MoviesAdapter(val movieClickListener:(Int) -> Unit, val favoriteCallback:(MovieModel, Boolean) -> Unit) :
-    RecyclerView.Adapter<MoviesViewHolder>() {
+class MoviesAdapter(
+    val movieClickListener: (Int) -> Unit,
+    val favoriteCallback: (MovieModel, Boolean) -> Unit
+) : RecyclerView.Adapter<MoviesViewHolder>() {
+
     val movieList: MutableList<MovieModel> = mutableListOf()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = MovieItemBinding.inflate(inflater, parent, false)
@@ -19,16 +23,17 @@ class MoviesAdapter(val movieClickListener:(Int) -> Unit, val favoriteCallback:(
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        val item = movieList[position]
-        holder.binding.movieTitle.text = item.title
+        val movie = movieList[position]
+        holder.binding.movieTitle.text = movie.title
         Glide.with(holder.binding.root)
-            .load("https://image.tmdb.org/t/p/w500${item.poster_path}")
+            .load("https://image.tmdb.org/t/p/w500${movie.poster_path}")
             .into(holder.binding.posterMovieList)
         holder.binding.movieItem.setOnClickListener {
-            movieClickListener(item.id)
+            movieClickListener(movie.id)
         }
-        holder.binding.favoriteIcon.setOnCheckedChangeListener { buttonView, isChecked ->
-            favoriteCallback(item, isChecked)
+        holder.binding.favoriteIcon.isChecked = movie.is_favorite
+        holder.binding.favoriteIcon.setOnCheckedChangeListener { buttonView, isFavorite ->
+            favoriteCallback(movie, isFavorite)
         }
     }
 
@@ -38,5 +43,10 @@ class MoviesAdapter(val movieClickListener:(Int) -> Unit, val favoriteCallback:(
         val firstItem = movieList.size
         movieList.addAll(list)
         notifyItemRangeInserted(firstItem, list.size)
+    }
+
+    fun addItemList(listSearch: List<MovieModel>) {
+        movieList.addAll(listSearch)
+        notifyDataSetChanged()
     }
 }

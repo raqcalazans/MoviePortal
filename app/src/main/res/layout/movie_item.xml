@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/movie_item"
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:layout_margin="10dp"
-    android:orientation="horizontal"
-    tools:background="@color/background_app">
+    android:orientation="horizontal">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/poster_movie_list"
@@ -24,7 +22,7 @@
         android:layout_weight="0.9"
         android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="15sp"
+        android:textSize="20sp"
         tools:text="@string/movie_name" />
 
     <androidx.appcompat.widget.AppCompatCheckBox

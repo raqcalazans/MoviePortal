@@ -19,6 +19,8 @@ data class MovieModel(
     val release_date: String,
     @ColumnInfo(name = "vote_average")
     val vote_average: Double,
+    @ColumnInfo(name = "vote_count")
+    val vote_count: Int,
     @Ignore
     val genres: List<GenreModel?> = listOf(),
     @ColumnInfo(name = "adult")
@@ -26,11 +28,31 @@ data class MovieModel(
     @ColumnInfo(name = "runtime")
     val runtime: Int,
     @ColumnInfo(name = "is_favorite")
-    var is_favorite: Boolean = false
+    var is_favorite: Boolean
 ) {
     constructor(
-        is_favorite: Boolean, runtime: Int, adult: Boolean, vote_average: Double, release_date: String,
-        overview: String, poster_path: String, id: Int, title: String
-    ) : this(title, id, poster_path, overview, release_date, vote_average, listOf(), adult, runtime, is_favorite)
+        is_favorite: Boolean,
+        runtime: Int,
+        adult: Boolean,
+        vote_average: Double,
+        vote_count: Int,
+        release_date: String,
+        overview: String,
+        poster_path: String,
+        id: Int,
+        title: String
+    ) : this(
+        title,
+        id,
+        poster_path,
+        overview,
+        release_date,
+        vote_average,
+        vote_count,
+        listOf(),
+        adult,
+        runtime,
+        is_favorite
+    )
 }
 

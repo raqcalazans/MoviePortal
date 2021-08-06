@@ -8,35 +8,35 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface TheMoviesApi {
-    @GET("3/search/movie")
+    @GET("search/movie")
     fun searchMovie(
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") idioma: String = IDIOM,
-        @Query("query") searchqueryapi: String
+        @Query("query") searchQueryApi: String
     ): Call<MovieList>
 
-    @GET("3/movie/popular")
+    @GET("movie/popular")
     fun listPopular(
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") idiom: String = IDIOM,
         @Query("page") page: Int
     ): Call<MovieList>
 
-    @GET("3/movie/top_rated")
+    @GET("movie/top_rated")
     fun listTopRated(
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") idiom: String = IDIOM,
         @Query("page") page: Int
     ): Call<MovieList>
 
-    @GET("3/movie/upcoming")
+    @GET("movie/upcoming")
     fun listUpcoming(
         @Query("api_key") apiKey: String = API_KEY,
         @Query("language") idiom: String = IDIOM,
         @Query("page") page: Int
     ): Call<MovieList>
 
-    @GET("3/movie/{idMovie}")
+    @GET("movie/{idMovie}")
     fun getMovieById(
         @Path("idMovie") id: Int,
         @Query("api_key") apiKey: String = API_KEY,

@@ -1,4 +1,4 @@
-package com.example.primeiroappshare.view
+package com.example.primeiroappshare.view.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,17 +8,13 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.primeiroappshare.R
 import com.example.primeiroappshare.databinding.ActivityDetailsMovieBinding
-import com.example.primeiroappshare.model.GenreModel
 import com.example.primeiroappshare.model.MovieModel
 import com.example.primeiroappshare.model.MovieRepository
-import com.example.primeiroappshare.view.MainActivity.Companion.ID_LIST
+import com.example.primeiroappshare.view.activity.MainActivity.Companion.ID_LIST
+import com.example.primeiroappshare.view.activity.MainActivity.Companion.ID_MOVIE
 
 class DetailsMovieActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsMovieBinding
-
-    companion object {
-        const val ID_MOVIE = "id_movie"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,10 +39,10 @@ class DetailsMovieActivity : AppCompatActivity() {
         }
     }
 
-    private fun getFormattedGenre(movie: MovieModel): String{
+    private fun getFormattedGenre(movie: MovieModel): String {
         var textGenre = ""
-        movie.genres?.forEachIndexed{index, genre ->
-            if(index == 0) textGenre += genre?.name
+        movie.genres?.forEachIndexed { index, genre ->
+            if (index == 0) textGenre += genre?.name
             else textGenre += ", ${genre?.name}"
         }
         return textGenre
@@ -59,9 +55,12 @@ class DetailsMovieActivity : AppCompatActivity() {
             binding.posterMovie.visibility = View.VISIBLE
             binding.scrollViewDetails.visibility = View.VISIBLE
             binding.nameMovie.text = it.title
-            binding.ratingBar.rating = ((it.vote_average/2).toFloat())
-            binding.adultMovie.text = if(it.adult) "+18" else "-18"
-            binding.adultMovie.background = if(it.adult) resources.getDrawable(R.drawable.textview_black_bg) else resources.getDrawable(R.drawable.textview_green_bg)
+            binding.ratingBar.rating = ((it.vote_average / 2).toFloat())
+            binding.voteCount.text = it.vote_count.toString()
+            binding.adultMovie.text = if (it.adult) "+18" else "-18"
+            binding.adultMovie.background =
+                if (it.adult) resources.getDrawable(R.drawable.textview_red_bg)
+                else resources.getDrawable(R.drawable.textview_green_bg)
             val releaseYear: String = it.release_date.take(4)
             binding.releaseYear.text = "${releaseYear}"
             binding.durationMovie.text = "${it.runtime}min"

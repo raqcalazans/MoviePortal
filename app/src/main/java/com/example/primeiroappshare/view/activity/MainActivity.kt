@@ -1,19 +1,20 @@
-package com.example.primeiroappshare.view
+package com.example.primeiroappshare.view.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.primeiroappshare.databinding.ActivityMainBinding
-import com.example.primeiroappshare.view.ListMoviesActivity.Companion.FAVORITE
-import com.example.primeiroappshare.view.ListMoviesActivity.Companion.POPULAR
-import com.example.primeiroappshare.view.ListMoviesActivity.Companion.TOP_RATED
-import com.example.primeiroappshare.view.ListMoviesActivity.Companion.UPCOMING
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     companion object {
-        const val ID_LIST: String = "id_list"
+        const val ID_LIST = "id_list"
+        const val ID_MOVIE = "id_movie"
+        const val POPULAR = 0
+        const val TOP_RATED = 1
+        const val UPCOMING = 2
+        const val FAVORITE = 3
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,25 +29,25 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnPopular.setOnClickListener {
             val intent = Intent(this, ListMoviesActivity::class.java)
-            intent.putExtra(Companion.ID_LIST, POPULAR)
+            intent.putExtra(ID_LIST, POPULAR)
             startActivity(intent)
         }
 
         binding.btnTop.setOnClickListener {
             val intent = Intent(this, ListMoviesActivity::class.java)
-            intent.putExtra(Companion.ID_LIST, TOP_RATED)
+            intent.putExtra(ID_LIST, TOP_RATED)
             startActivity(intent)
         }
 
         binding.btnUpcoming.setOnClickListener {
             val intent = Intent(this, ListMoviesActivity::class.java)
-            intent.putExtra(Companion.ID_LIST, UPCOMING)
+            intent.putExtra(ID_LIST, UPCOMING)
             startActivity(intent)
         }
 
         binding.btnFavorite.setOnClickListener {
             val intent = Intent(this, ListMoviesActivity::class.java)
-            intent.putExtra(Companion.ID_LIST, FAVORITE)
+            intent.putExtra(ID_LIST, FAVORITE)
             startActivity(intent)
         }
     }

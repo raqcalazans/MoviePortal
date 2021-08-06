@@ -22,7 +22,7 @@
         android:id="@+id/linear_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/dark_red"
+        android:background="@color/dark_grey"
         android:orientation="horizontal"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +33,7 @@
             android:id="@+id/btn_arrow_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
             android:layout_weight="0.01"
             android:background="@android:color/transparent"
@@ -42,47 +43,50 @@
             android:id="@+id/list_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="50dp"
             android:layout_weight="0.9"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             tools:text="@string/app_name" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="0.01"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_baseline_search_24" />
+        <!--        <androidx.appcompat.widget.AppCompatImageButton-->
+        <!--            android:id="@+id/btn_search"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_margin="10dp"-->
+        <!--            android:layout_weight="0.01"-->
+        <!--            android:background="@android:color/transparent"-->
+        <!--            android:src="@drawable/ic_baseline_search_24" />-->
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/gradient_main"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear_header">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background_app"
             android:orientation="vertical"
-            tools:context=".view.ListMoviesActivity">
+            tools:context=".view.activity.ListMoviesActivity">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycle_movies"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:visibility="gone"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="2"
                 tools:listitem="@layout/movie_item" />
@@ -94,7 +98,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20sp"
                 android:layout_marginBottom="30dp"
-                android:background="@color/dark_red"
+                android:background="@color/dark_grey"
                 android:text="@string/btn_see_more"
                 android:textColor="@color/white"
                 android:visibility="gone"

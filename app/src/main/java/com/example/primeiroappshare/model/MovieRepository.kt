@@ -2,6 +2,8 @@ package com.example.primeiroappshare.model
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.primeiroappshare.model.ApiConsts.API_KEY
 import com.example.primeiroappshare.model.ApiConsts.IDIOM
 import kotlinx.coroutines.*
@@ -14,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object MovieRepository {
     private val retrofit: Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl("https://api.themoviedb.org/")
+        .baseUrl("https://api.themoviedb.org/3/")
         .build()
 
     val moviesApi: TheMoviesApi = retrofit.create(TheMoviesApi::class.java)
@@ -125,21 +127,21 @@ object MovieRepository {
         }
     }
 
-//    fun searchMovie(callback: (MovieModel) -> Unit, searchItem: String){
-//        CoroutineScope(GlobalScope.coroutineContext).launch(Dispatchers.Main) {
-//            withContext(Dispatchers.IO){
-//                val callApi = moviesApi.getMovieById(id, API_KEY, IDIOM)
-//                callApi.enqueue(object : Callback<MovieModel> {
-//                    override fun onResponse(call: Call<MovieModel>, response: Response<MovieModel>) {
-//                        response.body()?.let {
-//                            callback(it)
-//                        }
-//                    }
-//                    override fun onFailure(call: Call<MovieModel>, t: Throwable) {
-//
-//                    }
-//                })
-//            }
-//        }
-//    }
+    fun searchMovie(searchItem: String, callback: (List<MovieModel>) -> Unit){
+        CoroutineScope(GlobalScope.coroutineContext).launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO){
+                val callApi = moviesApi.searchMovie(API_KEY, IDIOM, searchItem)
+                callApi.enqueue(object : Callback<MovieList> {
+                    override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
+                        response.body()?.let { movieList ->
+                            callback(movieList.results)
+                        }
+                    }
+                    override fun onFailure(call: Call<MovieList>, t: Throwable) {
+                        println("Caiu no onFailure")
+                    }
+                })
+            }
+        }
+    }
 }
