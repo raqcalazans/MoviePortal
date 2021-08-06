@@ -18,22 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="18dp"
-        android:backgroundTint="@color/white"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/ic_baseline_arrow_back_24"
-        android:translationZ="100dp"
-        android:visibility="gone"
-        app:borderWidth="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
-
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/poster_movie"
         android:layout_width="match_parent"
@@ -44,147 +28,170 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/poster_interestelar" />
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll_view_details"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_details_btn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:translationZ="10dp"
         android:visibility="gone" >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/text_background"
-            android:layout_width="match_parent"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="400dp"
-            android:background="@color/background_details"
-            android:padding="20dp"
-            tools:context=".view.activity.MainActivity">
+            android:layout_margin="18dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:translationZ="100dp"
+            app:borderWidth="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/name_movie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="70dp"
-                android:gravity="center"
-                android:textColor="@color/text_details"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/linear_details"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/movie_name" />
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_view_details"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:translationZ="10dp" >
 
-            <androidx.appcompat.widget.AppCompatRatingBar
-                android:id="@+id/rating_bar"
-                style="?android:attr/ratingBarStyleIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:numStars="5"
-                android:progressBackgroundTint="@color/black"
-                android:progressTint="@color/yellow"
-                android:secondaryProgressTint="@color/yellow"
-                android:stepSize="0.1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name_movie"
-                tools:rating="3.6" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/vote_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_group_24"
-                android:textColor="@color/dark_grey"
-                android:textSize="18dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rating_bar"
-                tools:text="@string/vote_count" />
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linear_details"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/text_background"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/vote_count">
+                android:layout_height="match_parent"
+                android:layout_marginTop="300dp"
+                android:background="@color/background_details"
+                android:padding="20dp"
+                tools:context=".view.activity.MainActivity">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/release_year"
+                    android:id="@+id/name_movie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="0.3"
-                    android:drawableStart="@drawable/ic_baseline_calendar_today_24"
-                    android:textColor="@color/text_details"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="@string/release_year" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/duration_movie"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="0.3"
-                    android:drawableStart="@drawable/ic_twotone_access_time_24"
-                    android:textColor="@color/text_details"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="@string/duration_movie" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/adult_movie"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:background="@color/green"
+                    android:layout_marginBottom="70dp"
                     android:gravity="center"
-                    android:padding="5dp"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textColor="@color/text_details"
+                    android:textSize="25sp"
                     android:textStyle="bold"
-                    tools:text="@string/adult_movie" />
+                    app:layout_constraintBottom_toTopOf="@id/linear_details"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/movie_name" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/rating_bar"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:numStars="5"
+                    android:progressBackgroundTint="@color/black"
+                    android:progressTint="@color/yellow"
+                    android:secondaryProgressTint="@color/yellow"
+                    android:stepSize="0.1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name_movie"
+                    tools:rating="3.6" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/genre_movie"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:drawableStart="@drawable/ic_baseline_movie_24"
-                android:textColor="@color/text_details"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/linear_details"
-                tools:text="@string/genre_movie" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/vote_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_group_24"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rating_bar"
+                    tools:text="@string/vote_count" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/overview_movie"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
-                android:justificationMode="inter_word"
-                android:textColor="@color/text_details"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/genre_movie"
-                tools:text="@string/overview_movie" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linear_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="30dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vote_count">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/release_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.3"
+                        android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+                        android:textColor="@color/text_details"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:text="@string/release_year" />
 
-    </androidx.core.widget.NestedScrollView>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/duration_movie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.3"
+                        android:drawableStart="@drawable/ic_twotone_access_time_24"
+                        android:textColor="@color/text_details"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:text="@string/duration_movie" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/adult_movie"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/green"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="@string/adult_movie" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/genre_movie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:drawableStart="@drawable/ic_baseline_movie_24"
+                    android:textColor="@color/text_details"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/linear_details"
+                    tools:text="@string/genre_movie" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/overview_movie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:justificationMode="inter_word"
+                    android:textColor="@color/text_details"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/genre_movie"
+                    tools:text="@string/overview_movie" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

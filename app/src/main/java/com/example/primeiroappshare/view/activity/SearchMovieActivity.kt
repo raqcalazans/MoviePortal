@@ -19,7 +19,7 @@ class SearchMovieActivity : AppCompatActivity() {
         setupList()
         setupQuery()
 
-        binding.btnBackFavorite.setOnClickListener {
+        binding.btnBackSearch.setOnClickListener {
             onBackPressed()
         }
     }

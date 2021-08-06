@@ -18,4 +18,5 @@
     <string name="title_popular">Popular Movies</string>
     <string name="vote_count">22162</string>
     <string name="search_view_text">Pesquisar um filme</string>
+    <string name="warning_text_favorites">"You still don't have favorites."</string>
 </resources>

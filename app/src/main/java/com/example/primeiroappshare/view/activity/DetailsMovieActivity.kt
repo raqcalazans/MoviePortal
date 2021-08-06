@@ -33,6 +33,7 @@ class DetailsMovieActivity : AppCompatActivity() {
                 1 -> intent.putExtra(ID_LIST, idList)
                 2 -> intent.putExtra(ID_LIST, idList)
                 3 -> intent.putExtra(ID_LIST, idList)
+                4 -> intent.putExtra(ID_LIST, idList)
                 else -> Toast.makeText(this, "ERRO", Toast.LENGTH_LONG).show()
             }
             startActivity(intent)
@@ -51,9 +52,8 @@ class DetailsMovieActivity : AppCompatActivity() {
     private fun callDetails(id: Int) {
         MovieRepository.getMovie({
             binding.progressBar.visibility = View.GONE
-            binding.btnBack.visibility = View.VISIBLE
             binding.posterMovie.visibility = View.VISIBLE
-            binding.scrollViewDetails.visibility = View.VISIBLE
+            binding.linearDetailsBtn.visibility = View.VISIBLE
             binding.nameMovie.text = it.title
             binding.ratingBar.rating = ((it.vote_average / 2).toFloat())
             binding.voteCount.text = it.vote_count.toString()

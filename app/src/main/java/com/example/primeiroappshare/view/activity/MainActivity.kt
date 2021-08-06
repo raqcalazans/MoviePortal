@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         const val TOP_RATED = 1
         const val UPCOMING = 2
         const val FAVORITE = 3
+        const val SEARCH = 4
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,16 +7,15 @@ import android.view.View
 import android.widget.Toast
 import com.example.primeiroappshare.R
 import com.example.primeiroappshare.databinding.ActivityListMoviesBinding
-import com.example.primeiroappshare.databinding.MovieItemBinding
 import com.example.primeiroappshare.model.MovieModel
 import com.example.primeiroappshare.model.MovieRepository
 import com.example.primeiroappshare.view.MoviesAdapter
 import com.example.primeiroappshare.view.activity.MainActivity.Companion.ID_LIST
 import com.example.primeiroappshare.view.activity.MainActivity.Companion.ID_MOVIE
+import com.example.primeiroappshare.view.activity.MainActivity.Companion.SEARCH
 
 class ListMoviesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListMoviesBinding
-    private lateinit var bindingItem: MovieItemBinding
     private var pageApi: Int = 1
     private lateinit var adapterMovies: MoviesAdapter
 
@@ -48,11 +47,14 @@ class ListMoviesActivity : AppCompatActivity() {
         binding.recycleMovies.adapter = adapterMovies
 
         binding.btnArrowBack.setOnClickListener {
-            onBackPressed()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
 //        binding.btnSearch.setOnClickListener {
+//            println("Clicou no botão de pesquisa")
 //            val intent = Intent(this, SearchMovieActivity::class.java)
+//            intent.putExtra(ID_LIST, SEARCH)
 //            startActivity(intent)
 //        }
 
@@ -89,14 +91,21 @@ class ListMoviesActivity : AppCompatActivity() {
 
     private fun callFavorite() {
         MovieRepository.getFavorite(this) { list ->
-            list.forEach{ movie ->
-                movie.is_favorite = true
+            if(list.isEmpty()) {
+                binding.progressBar.visibility = View.GONE
+                binding.linearHeader.visibility = View.VISIBLE
+                binding.listName.text = "Favorite Movies"
+                binding.warningText.visibility = View.VISIBLE
+            } else {
+                list.forEach{ movie ->
+                    movie.is_favorite = true
+                }
+                adapterMovies.addMovies(list)
+                binding.progressBar.visibility = View.GONE
+                binding.linearHeader.visibility = View.VISIBLE
+                binding.listName.text = "Favorite Movies"
+                binding.scrollViewList.visibility = View.VISIBLE
             }
-            adapterMovies.addMovies(list)
-            binding.progressBar.visibility = View.GONE
-            binding.linearHeader.visibility = View.VISIBLE
-            binding.listName.text = "Favorite Movies"
-            binding.scrollViewList.visibility = View.VISIBLE
         }
     }
 
