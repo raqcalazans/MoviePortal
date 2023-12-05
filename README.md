@@ -19,13 +19,13 @@ Foi a avaliação final do Bootcamp Online de Kotlin da <a href="https://sharepe
 https://github.com/raqcalazans/MoviePortal/assets/47869356/17e4ff39-5562-45be-83a1-20d111b8e891
 
 ## Funcionalidades Implementadas
-* Listagem de Filmes Populares, Mais Bem Avaliados e Lançamentos;
-* Possibilidade de favoritar filmes e também desfazer essa ação;
-* Tela de detalhes do filme.
+* Listagem de Filmes Populares, Mais Bem Avaliados e Lançamentos
+* Possibilidade de favoritar filmes e também desfazer essa ação
+* Tela de detalhes do filme
 
 ## Funcionalidades a serem implementadas
-* Campo para pesquisar um filme.
+* Campo de pesquisa
 
 ## Instruções de Instalação 
-* Clone o projeto na pasta desejada com 
+* Clone o projeto na pasta desejada com ![Código](https://img.shields.io/badge/git%20clone%20https%3A%2F%2Fgithub.com%2Fraqcalazans%2FMoviePortal.git-gray)
 * Utilize Android Studio para rodar o projeto
