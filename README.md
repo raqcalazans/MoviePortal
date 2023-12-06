@@ -27,6 +27,7 @@ https://github.com/raqcalazans/MoviePortal/assets/47869356/676d2780-bb6b-4ff5-b6
 
 ## Tarefas em aberto
 :memo: Campo de pesquisa  
+:memo: Agrupar e classificar filmes já assistidos  
 :memo: Testes
 
 ## Como rodar a aplicação :arrow_forward:
@@ -34,4 +35,4 @@ https://github.com/raqcalazans/MoviePortal/assets/47869356/676d2780-bb6b-4ff5-b6
 ```
 git clone https://github.com/raqcalazans/MoviePortal/
 ``` 
-* Abra com Android Studio
+* Execute com Android Studio
