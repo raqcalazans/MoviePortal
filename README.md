@@ -12,20 +12,26 @@
 </p>
 
 ## Descrição do projeto
-<p align="justify">Este projeto é um aplicativo android que consome a API gratuita de filmes  <a href="https://www.themoviedb.org/">The Movie DB ou TMDB.</a>
-Foi a avaliação final do Bootcamp Online de Kotlin da <a href="https://sharepeoplehub.com.br">ShareRH</a>, ocorrido nos meses de Julho e Agosto de 2021.</p>
+<p align="justify">Este projeto é um aplicativo Android que consome a <b>API REST</b> gratuita <a href="https://www.themoviedb.org/">The Movie DB (TMDB)</a>, utilizando a biblioteca <b>Retrofit</b>.
+Foi utilizado somente a linguagem <b>Kotlin</b> e a sua execução não tem nenhuma dependência ou pré-requisito, apenas utilização da IDE <b>Android Studio.</b>
+O objetivo desse desenvolvimento foi a validação final dos conhecimento adiquiridos na Formação Kotlin da <a href="https://sharepeoplehub.com.br">ShareRH</a>, ocorrido nos meses de Julho e Agosto de 2021.</p>
 
 ## Veja como o aplicativo ficou 
 https://github.com/raqcalazans/MoviePortal/assets/47869356/17e4ff39-5562-45be-83a1-20d111b8e891
 
 ## Funcionalidades Implementadas
-* Listagem de Filmes Populares, Mais Bem Avaliados e Lançamentos
-* Possibilidade de favoritar filmes e também desfazer essa ação
-* Tela de detalhes do filme
+:heavy_check_mark: Listagem de Filmes Populares, Mais Bem Avaliados e Lançamentos  
+:heavy_check_mark: Possibilidade de favoritar filmes e também desfazer essa ação  
+:heavy_check_mark: Botão para carregar mais filmes da categoria desejada  
+:heavy_check_mark: Tela de detalhes do filme
 
-## Funcionalidades a serem implementadas
-* Campo de pesquisa
+## Tarefas em aberto
+:memo: Campo de pesquisa  
+:memo: Testes
 
-## Instruções de Instalação 
-* Clone o projeto na pasta desejada com ![Código](https://img.shields.io/badge/git%20clone%20https%3A%2F%2Fgithub.com%2Fraqcalazans%2FMoviePortal.git-gray)
-* Utilize Android Studio para rodar o projeto
+## Como rodar a aplicação :arrow_forward:
+* No terminal, clone o projeto
+```
+git clone https://github.com/raqcalazans/MoviePortal/
+``` 
+* Abra com Android Studio
