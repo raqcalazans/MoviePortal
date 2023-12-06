@@ -12,12 +12,12 @@
 </p>
 
 ## Descrição do projeto
-<p align="justify">Este projeto é um aplicativo Android que consome a <b>API REST</b> gratuita <a href="https://www.themoviedb.org/">The Movie DB (TMDB)</a>, utilizando a biblioteca <b>Retrofit</b>.
+<p align="justify">Este projeto é um aplicativo Android que consome a <b>API REST</b> gratuita <a href="https://www.themoviedb.org/">TheMovieDB (TMDB)</a>, utilizando a biblioteca <b>Retrofit</b>.
 Foi utilizado somente a linguagem <b>Kotlin</b> e a sua execução não tem nenhuma dependência ou pré-requisito, apenas utilização da IDE <b>Android Studio.</b>
 O objetivo desse desenvolvimento foi a validação final dos conhecimento adiquiridos na Formação Kotlin da <a href="https://sharepeoplehub.com.br">ShareRH</a>, ocorrido nos meses de Julho e Agosto de 2021.</p>
 
-## Veja como o aplicativo ficou 
-https://github.com/raqcalazans/MoviePortal/assets/47869356/17e4ff39-5562-45be-83a1-20d111b8e891
+## Veja como o aplicativo ficou  
+https://github.com/raqcalazans/MoviePortal/assets/47869356/676d2780-bb6b-4ff5-b6a3-4e685fbb9ec1
 
 ## Funcionalidades Implementadas
 :heavy_check_mark: Listagem de Filmes Populares, Mais Bem Avaliados e Lançamentos  
